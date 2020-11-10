@@ -2,6 +2,9 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const port = 8000;
+const cors = require("cors");
+
+app.use(cors());
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -111,7 +114,7 @@ app.put("/game/:id", (req, res) => {
             game.year = year;
         }
 
-        res.sendStatus(202)
+        res.sendStatus(200)
     } else {
       res.sendStatus(404);
     }
