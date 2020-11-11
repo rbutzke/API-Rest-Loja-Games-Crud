@@ -80,8 +80,16 @@ let DB = {
 
 app.get("/games", auth, (req, res) => {
 
+  let HATEOAS = [
+     {
+        href: "http://localhost:8000/games",
+        method: "GET",
+        rel: "get_all_game"
+     }
+  ]
+
   res.statusCode = 200;
-  res.json(DB.games);
+  res.json({games: DB.games, _links: HATEOAS });
 
 });
 
